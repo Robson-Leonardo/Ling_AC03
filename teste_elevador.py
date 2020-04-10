@@ -1,16 +1,8 @@
 import controle
 
-Elevador1 = controle.Elevador(15,(4,1,5,0,2,3,4,4))
+ElevadorPares = controle.Elevador(15,[-2,-4,-6,2,4,6])
+ElevadorImpares = controle.Elevador(15,[-1,-3,-5,1,3,5])
 
-Elevador1.printelevador()
+ElevadorPares.printelevador()
+ElevadorImpares.printelevador()
 
-Elevador1.subir()
-Elevador1.printelevador()
-Elevador1.subir()
-Elevador1.printelevador()
-Elevador1.subir()
-Elevador1.printelevador()
-Elevador1.subir()
-Elevador1.printelevador()
-Elevador1.subir()
-Elevador1.printelevador()
