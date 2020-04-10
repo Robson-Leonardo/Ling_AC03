@@ -15,10 +15,18 @@ class Elevador:
         if aux == False:
             atendidos.append(0)
 
-        self.__capacidade = capacidade
+        self.__capacidade = capacidade #Quantidade maxima de pessoas
         self.__andar_atual = 0
-        self.__quantidade_pessoas = 0
+        self.__quantidade_pessoas = 0 #Quantidade de pessoas atual
         self.__atendidos = atendidos            
+
+    def entrar(self):
+        if not self.__quantidade_pessoas == self.__capacidade:
+            self.__quantidade_pessoas += 1
+
+    def sair(self):
+        if not self.__quantidade_pessoas == 0:
+            self.__quantidade_pessoas -= 1 
 
     def subir(self):
         crescente = self.__atendidos
@@ -37,6 +45,10 @@ class Elevador:
                 self.__andar_atual = andar
                 print("Elevador desceu para o andar", self.__andar_atual)
                 break
+        
+    def deslocar_para(self, andar):
+        if andar in self.__atendidos:
+            self.__andar_atual = andar
         
 
     def printelevador(self):
