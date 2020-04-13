@@ -166,15 +166,15 @@ class Predio:
             mais_proximo[0].deslocar_para(andar)
 
             if andar > 0:
-                self.__embarque(mais_proximo[0])
+                self.__embarque(self.__elevadores.index(mais_proximo[0]))
             elif andar <= 0:
-                self.__desembarque(mais_proximo[0])
+                self.__desembarque(self.__elevadores.index(mais_proximo[0]))
         else:
             raise ValueError("Andar chamado não existe.")
 
     def __embarque(self, indice_elevador):
-        indice_elevador.entrar()
+        self.__elevadores[indice_elevador].entrar()
 
     def __desembarque(self, indice_elevador):
-        for a in range(0, indice_elevador.get_quantidade_pessoas() + 1):
-            indice_elevador.sair()
+        while self.__elevadores[indice_elevador].get_quantidade_pessoas() != 0:
+            self.__elevadores[indice_elevador].sair()
