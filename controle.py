@@ -8,7 +8,7 @@ class Elevador:
     def __init__(self, capacidade, andares):
         if 0 not in andares:
             andares.append(0)
-
+    
         self.__capacidade = capacidade
         self.__andar_atual = 0
         self.__quantidade_pessoas = 0
@@ -164,18 +164,17 @@ class Predio:
 
             # Move o elevador escolhido para o andar que chamou
             mais_proximo[0].deslocar_para(andar)
-            print(mais_proximo[0])
 
             if andar > 0:
-                self.__embarque(self.__elevadores.index(mais_proximo[0]))
+                self.__embarque(mais_proximo[0])
             elif andar <= 0:
-                self.__desembarque(self.__elevadores.index(mais_proximo[0]))
+                self.__desembarque(mais_proximo[0])
         else:
             raise ValueError("Andar chamado não existe.")
 
     def __embarque(self, indice_elevador):
-        self.__elevadores[indice_elevador].entrar()
+        indice_elevador.entrar()
 
     def __desembarque(self, indice_elevador):
-        while self.__elevadores[indice_elevador].get_quantidade_pessoas() != 0:
-            self.__elevadores[indice_elevador].sair()
+        for a in range(0, indice_elevador.get_quantidade_pessoas() + 1):
+            indice_elevador.sair()
